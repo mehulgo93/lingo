@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="24" viewBox="0 0 32 24" fill="none">
+    <!-- Saffron color stripe -->
+    <rect width="32" height="8" fill="#FF9933"/>
+    <!-- White color stripe -->
+    <rect y="8" width="32" height="8" fill="#FFFFFF"/>
+    <!-- Green color stripe -->
+    <rect y="16" width="32" height="8" fill="#138808"/>
+    <!-- Ashoka Chakra -->
+    <!-- Outer Circle -->
+    <circle cx="16" cy="12" r="3.5" fill="none" stroke="#000080" stroke-width="0.5"/>
+    <!-- Spokes -->
+    <g fill="#000080">
+        <!-- Each group element 'g' below represents spokes of the Ashoka Chakra. We replicate it 24 times to create 24 spokes. -->
+        <g transform="translate(16,12)">
+            <g transform="rotate(15)">
+                <path d="M 0,-3 V -3.5" stroke="#000080" stroke-width="0.5"/>
+            </g>
+            <use xlink:href="#a" transform="rotate(30)"/>
+        </g>
+        <use xlink:href="#a" transform="rotate(30)"/>
+        <use xlink:href="#a" transform="rotate(60)"/>
+        <use xlink:href="#a" transform="rotate(90)"/>
+        <use xlink:href="#a" transform="rotate(120)"/>
+        <use xlink:href="#a" transform="rotate(150)"/>
+        <use xlink:href="#a" transform="rotate(180)"/>
+        <use xlink:href="#a" transform="rotate(210)"/>
+        <use xlink:href="#a" transform="rotate(240)"/>
+        <use xlink:href="#a" transform="rotate(270)"/>
+        <use xlink:href="#a" transform="rotate(300)"/>
+        <use xlink:href="#a" transform="rotate(330)"/>
+    </g>
+</svg>
