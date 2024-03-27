@@ -70,6 +70,30 @@ const main = async () => {
                 order: 1,
                 title: "Nouns",
             },
+            {
+                id: 2,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 2,
+                title: "Verbs",
+            },
+            {
+                id: 3,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 3,
+                title: "Adjectives",
+            },
+            {
+                id: 4,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 4,
+                title: "Male",
+            },
+            {
+                id: 5,
+                unitId: 1, // Unit 1 (Learn the basics...)
+                order: 5,
+                title: "Female",
+            },
         ]);
 
         await db.insert(schema.challenges).values([
@@ -107,7 +131,7 @@ const main = async () => {
                 text: "el robot",
                 audioSrc: "/es_robot.mp3",
             },
-            
+
         ])
 
         console.log("Seeding Finished");
