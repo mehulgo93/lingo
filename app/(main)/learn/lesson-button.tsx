@@ -81,7 +81,7 @@ export const LessonButton = ({
               >
                 <Icon
                   className={cn(
-                    "h-10 w-10",
+                    "h-6 w-6",
                     locked
                       ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
                       : "fill-primary-foreground text-primary-foreground",
@@ -99,7 +99,7 @@ export const LessonButton = ({
           >
             <Icon
               className={cn(
-                "h-10 w-10",
+                "h-6 w-6",
                 locked
                   ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
                   : "fill-primary-foreground text-primary-foreground",
