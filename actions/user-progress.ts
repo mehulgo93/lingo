@@ -10,6 +10,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import db from "@/db/drizzle";
 
+const POINTS_TO_REFILL = 10
+
 export const upsertUserProgress = async (courseId: number) => {
     // every time we need to check the user progress we need to make sure that the user is logged in
     // every time we do server actions we need to behave like we are doing an API call so that's the reason for trying to authorize the user
@@ -100,3 +102,26 @@ export const reduceHearts = async (challengeId:number) => {
     revalidatePath("/leaderboard");
     revalidatePath(`/lesson/${lessonId}`);
 };
+
+
+export const refillHearts = async () => {
+    const currentUserProgress = await getUserProgress();
+    if (!currentUserProgress) {
+        throw new Error("User Progress not found");
+    }
+
+    if (currentUserProgress.hearts === 5) {
+        throw new Error("hearts are already full");
+    }
+    if (currentUserProgress.points < POINTS_TO_REFILL) {
+        throw new Error("not enough points to refill");
+    }
+    await db.update(userProgress).set({
+        hearts: currentUserProgress.hearts + 1,
+        points: currentUserProgress.points - POINTS_TO_REFILL
+    }).where(eq(userProgress.userId, currentUserProgress.userId));
+    revalidatePath("/shop");
+    revalidatePath("/learn");
+    revalidatePath("/leaderboard");
+    revalidatePath("/quests");
+}
