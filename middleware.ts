@@ -6,7 +6,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   // Allow signed out users to access the specified routes:
   // when we add the slash after the public routes it allows the user to access the marketing page without actually signing in
-   publicRoutes: ['/'],
+   publicRoutes: ['/', "/api/webhooks/stripe"],
   // Prevent the specified routes from accessing
   // authentication information:
   // ignoredRoutes: ['/no-auth-in-this-route'],
