@@ -13,6 +13,8 @@ import {
 } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { Unit } from "./unit";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -41,6 +43,7 @@ const LearnPage = async () => {
   if (!courseProgress) {
     redirect("/courses");
   }
+  const isPro = !!userSubscription?.isActive;
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
@@ -49,8 +52,10 @@ const LearnPage = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
           //TODO: still have to introduce active subscription to the schema so for now its hard coded
-          hasActiveSubscription={!!userSubscription?.isActive}
+          hasActiveSubscription={isPro}
         />
+        {!isPro && <Promo />}
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
