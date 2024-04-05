@@ -75,11 +75,20 @@ export const getUnits = cache(async () => {
 export const getCoursesById = cache(async(courseId: number) => {
     const data = await db.query.courses.findFirst({
         where: eq(courses.id, courseId),
-        // TODO: populate units and lessons
+        with: {
+            units: {
+                orderBy: (units, {asc}) => [asc(units.order)],
+                with: {
+                    lessons: {
+                        orderBy: (lessons, {asc}) => [asc(lessons.order)],
+                    },
+                },
+            },
+        },
     });
 
     return data;
-})
+});
 
 // this query is used to save user progress data for a certain course that is active, this query will save the units and lessons of a certain course in the database
 export const getCourseProgress = cache(async() => {
