@@ -24,6 +24,6 @@ export const POST = async (req: Request) => {
   const data = await db.insert(courses).values({
     ...body,
   }).returning();
-
+// you need to use returning for the data to show up
   return NextResponse.json(data[0]);
 };
